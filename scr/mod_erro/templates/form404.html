@@ -1,0 +1,17 @@
+{% extends "base.html %}
+{% block title %}Page Not Found{% endblock %}
+{% block content %}
+<div class = "row">
+    <div class = "col">
+        <h1>Página não encontrada!</h1>
+        <h3>Tem que ver se esse endereço aí está correto.</h3>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "col">
+        {# mostra a mensagem de erro retornada #}
+        <p>{{ erroHttp }}</p>
+    </div>
+</div>
+{% endblock %}
