@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang = "pt-br">
-    <head>
-        <meta charset = "utf-8">
-        <title>Home</title>
-    </head>
-    <body>
-        <h1>Rota de página de Principal da nossa aplicação WEB</h1>
-        <h1>Uso de render_template</h1>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Homepage{% endblock %}
+{% block content %}
+<h1>Homepage</h1>
+<p class = "important">Seja bem vindo!</p>
+<ul>
+    <li><a href = "{{url_for('index.formIndex')}}">Home</a></li>
+    <li><a href = "{{url_for('funcionario.formListaFuncionario')}}">Funcionário</a></li>
+    <li><a href = "{{url_for('cliente.formListaCliente')}}">Cliente</a></li>
+    <li><a href = "{{url_for('produto.formListaProduto')}}">Produto</a></li>
+</ul>
+{% endblock %}

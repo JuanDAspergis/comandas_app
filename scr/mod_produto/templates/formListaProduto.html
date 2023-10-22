@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang = "pt-br">
-    <head>
-        <meta charset = "utf-8">
-        <title>Produtos</title>
-    </head>
-    <body>
-        <h1>Rota de página de Produtos da nossa aplicação WEB</h1>
-        <h1>Uso de render_template</h1>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Produto{% endblock %}
+{% block content %}
+<form action="{{ url_for('produto.formProduto') }}" method="POST">
+    <h1>Produtos</h1>
+    <button type="submit" name="formNovo">Novo Produto</button>
+</form>
+<table>
+    <thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nome</th>
+			<th scope="col">Marca</th>
+			<th scope="col">Quantidade</th>
+			<th scope="col">Preço</th>
+		</tr>
+    </thead>
+    <tbody>
+		<tr>
+			<th scope="row">...</th>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td><i class="fas fa-edit"></i></td>
+			<td><i class="fas fa-trash"></i></td>
+		</tr>
+    </tbody>
+</table>
+{% endblock %}
