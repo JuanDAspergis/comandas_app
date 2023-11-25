@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+import requests
 
 bp_index = Blueprint('index', __name__, url_prefix = "/", template_folder = 'templates')
 

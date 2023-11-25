@@ -10,21 +10,28 @@
 		<tr>
 			<th scope="col">#</th>
 			<th scope="col">Nome</th>
-			<th scope="col">Marca</th>
-			<th scope="col">Quantidade</th>
-			<th scope="col">Preço</th>
+			<th scope="col">Descrição</th>
+			<th scope="col">Valor Unitátio</th>
+			<th scope="col">Foto</th>
 		</tr>
     </thead>
     <tbody>
+		{% if result %}
+		{% for row in result %}
 		<tr>
-			<th scope="row">...</th>
-			<td>...</td>
-			<td>...</td>
-			<td>...</td>
-			<td>...</td>
-			<td><i class="fas fa-edit"></i></td>
-			<td><i class="fas fa-trash"></i></td>
+			<th scope="row">{{row['id_produto']}}</th>
+			<td>{{row['nome']}}</td>
+			<td>{{row['descricao']}}</td>
+			<td>{{row['valor_unitario']}}</td>
+			<td><img src="{{ row.foto }}" width="100" id="myImg"></td>
+			<td>
+				<form action="{{url_for('produto.formEditProduto')}}" method="POST" name="formEdit{{row['id_produto']}}">
+				<input type="hidden" name="id" value="{{row['id_produto']}}">
+				<button type="submit" name="formEditProduto"><i class="fas fa-edit"></i></button>
+			</td>
 		</tr>
+		{% endfor %}
+		{% endif %}
     </tbody>
 </table>
 {% endblock %}

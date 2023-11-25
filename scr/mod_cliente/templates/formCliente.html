@@ -1,22 +1,30 @@
 {% extends "base.html" %}
 {% block title %}Produto{% endblock %}
-{% block content %}
-<form name="formAdicionar" id="formAdicionar" action="" method="POST">
-	<h1>Produto</h1>
-	<input type="text" name="id" id="id" value="" placeholder="Código" readonly>
-	<label for="id">Código</label>
-	<br>
-	<input type="text" name="nome" id="nome" value="" placeholder="Nome" maxlength="100" autofocus required>
-	<label for="nome">Nome</label>
-	<br>
-	<input type="text" name="matricula" id="matricula" value="" placeholder="Matrícula" maxlength="100" required>
-	<label for="matricula">Matrícula</label>
-	<br>
-	<input type="text" name="cpf" id="cpf" value="" placeholder="CPF" maxlength="11" required>
-	<label for="cpf">CPF</label>
-	<br>
-	<input type="text" name="telefone" id="telefone" value="" placeholder="Telefone" maxlength="20" required>
-	<label for="telefone">Telefone</label>
-	<br>
 
+{% set id = result[0].id_cliente if result else '0' %}
+{% set nome = result[0].nome if result else '' %}
+{% set cpf = result[0].cpf if result else '' %}
+{% set telefone = result[0].telefone if result else '' %}
+{% set compra_fiado = result[0].compra_fiado if result else '' %}
+{% set dia_fiado = result[0].dia_fiado if result else '' %}
+
+{% block content %}
+<form name="{{ 'formEditar' if result else 'formAdicionar' }}" id="{{ 'formEditar' if result else 'formAdicionar' }}" action="{{ url_for('cliente.edit') if result else url_for('cliente.insert') }}" method="POST">
+	<h1>Cliente - {{ "%s: %s" % ('Editar Registro', id) if result else 'Novo' }}</h1>
+	<label for="id">ID</label>
+	<input type="text" name="id" id="id" value="{{ id }}">
+	<label for="nome">NOME</label>
+	<input type="text" name="nome" id="nome" value="{{ nome }}">
+	<label for="cpf">CPF</label>
+	<input type="text" name="cpf" id="cpf" value="{{ cpf }}">
+	<label for="telefone">TELEFONE</label>
+	<input type="text" name="telefone" id="telefone" value="{{ telefone }}">	
+	<label for="compra_fiado">COMPRA FIADO</label>
+	<input type="text" name="compra_fiado" id="compra_fiado" value="{{ compra_fiado }}">	
+	<label for="dia_fiado">DIA FIADO</label>
+	<input type="text" name="dia_fiado" id="dia_fiado" value="{{ dia_fiado }}">	
+	<label for="senha">SENHA</label>
+	<input type="password" name="senha" id="senha" value="{{ senha }}">
+	<button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB'><i class='fas fa-save'></i> Salvar</button>
+</form>
 {% endblock %}
