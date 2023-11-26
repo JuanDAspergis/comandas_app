@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, Flask
 import requests
 from settings import HEADERS_API, ENDPOINT_CLIENTE
 from funcoes import Funcoes
+from mod_login.login import validaSessao
 
 bp_cliente = Blueprint('cliente', __name__, url_prefix = "/cliente", template_folder = 'templates')
 

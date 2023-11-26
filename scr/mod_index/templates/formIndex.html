@@ -9,4 +9,7 @@
     <li><a href = "{{url_for('cliente.formListaCliente')}}">Cliente</a></li>
     <li><a href = "{{url_for('produto.formListaProduto')}}">Produto</a></li>
 </ul>
+{% if 'login' in session %}
+Bem-vindo <b>{{ session['login'] }}</b>
+{% endif %}
 {% endblock %}

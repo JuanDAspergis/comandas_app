@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 import requests
+from mod_login.login import validaSessao
 import base64
 from settings import HEADERS_API, ENDPOINT_PRODUTO
 
